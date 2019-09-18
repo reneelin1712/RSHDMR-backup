@@ -51,7 +51,7 @@ class Upload extends React.Component {
     loading: false //set to true while waiting for the data from server
   };
 
-  //ithe file and file name will be updated to the state of this component
+  //the file and file name will be updated to the state of this component
   onChangeHandler = e => {
     this.setState({
       selectedFile: e.target.files[0],
@@ -84,13 +84,14 @@ class Upload extends React.Component {
       });
   };
 
+ //send csv together with changed parameters, this function is not completed yet
   changeAndUpload = values => {
     // this.setState({ loading: true });
     const data = new FormData();
     data.append("file", this.state.selectedFile);
     data.append("values", values);
 
-    //use Axios to post csv file, then receive the data return by server
+    //use Axios to post csv file with changed params, then receive the data return by server
     axios
       .post(
         "http://ec2-52-193-188-87.ap-northeast-1.compute.amazonaws.com/upload",
