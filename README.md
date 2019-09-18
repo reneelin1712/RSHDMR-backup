@@ -115,6 +115,7 @@ db = client.rshdmr
 collection = db.users
 
 * MongoDB is No-SQL, currently we only created one collection, saving user data(for sign up, login) in a Json like format as below:
+
 { "_id" : ObjectId("5d7f71ca2b45ca5010861889"), "email" : "renee@123.com", "name" : "renee", "password" : "aaa" }
 { "_id" : ObjectId("5d7f725e2b45ca501086188a"), "email" : "tom@123.com", "name" : "tom", "password" : "zzz" }
 { "_id" : ObjectId("5d7f9d598db7c3d81b91ce1b"), "email" : "kyle@uq.com", "username" : "kyle", "password" : "zzz" }
