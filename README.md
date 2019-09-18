@@ -16,6 +16,7 @@ The front end is built with React, a JavaScript library.
 	Material-UI: an React base UI framework, similar to BootStrap
 
 	Axios: a javascript library used to make HTTP request
+* All the Node modules are not uploaded here(the files are large, usually it's included in git.ignore file), use "NPM install" after downloading all the codes
 
 
 ## 2. Components Brief:
