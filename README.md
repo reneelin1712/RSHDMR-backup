@@ -1,6 +1,6 @@
 
 
-#Client Side:
+# Client Side:
 The front end is built using React, a JavaScript library. 
 
 1. File structure: 
