@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./component/NavBar";
 
+//top level component of this web app
 class App extends React.Component {
   state = {
     users: [
