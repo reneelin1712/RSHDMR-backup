@@ -19,6 +19,9 @@ The front end is built with React, a JavaScript library.
 
 
 ## 2. Components Brief:
+* App.js
+
+	The top level component for storing application state and compose child componets
 
 * NavBar.js
 
@@ -109,3 +112,5 @@ we use MongoDB, install it on EC2 instance, open a mongo shell and create a data
 client = MongoClient('mongodb://localhost:27017/')
 db = client.rshdmr 
 collection = db.users
+
+* demo data is shown in the video
