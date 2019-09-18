@@ -13,7 +13,7 @@ React allows developers to divide the web pages into several reusable components
 ###Axios: a javascript library used to make HTTP request
 
 2. Components Brief:
-*NavBar.js
+* NavBar.js
 As this is a single page app, there is no links to different pages. This NavBar includes top navigation tabs and below corresponding tab panels. There are "Home", "Analysis", "Help" and "About" panels.
 
 *Login.js
