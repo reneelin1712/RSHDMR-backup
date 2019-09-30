@@ -125,7 +125,8 @@ export default function Report({ report }) {
         <Button size="medium" variant="contained" color="primary">
           <a
             style={{ color: "white", textDecoration: "none" }}
-            href="/getfiles"
+            href="http://ec2-52-193-188-87.ap-northeast-1.compute.amazonaws.com/download-pdf"
+            target="_blank"
           >
             DOWNLOAD PDF
           </a>
