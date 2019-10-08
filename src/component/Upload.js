@@ -86,30 +86,30 @@ class Upload extends React.Component {
       });
   };
 
-//  //send csv together with changed parameters, this function is not completed yet
-//   changeAndUpload = values => {
-//     // this.setState({ loading: true });
-//     const data = new FormData();
-//     data.append("file", this.state.selectedFile);
-//     data.append("values", values);
+ //send csv together with changed parameters, this function is not completed yet
+  changeAndUpload = values => {
+    this.setState({ loading: true });
+    console.log(values)
+    let data = new FormData();
+    data.append("file", this.state.selectedFile);
 
-//     //use Axios to post csv file with changed params, then receive the data return by server
-//     axios
-//       .post(
-//         "http://ec2-52-193-188-87.ap-northeast-1.compute.amazonaws.com/upload",
-//         data
-//       )
-//       .then(res => {
-//         // then update the state using returned data
-//         this.setState({
-//           data1: Object.entries(res.data.data1),
-//           data2: Object.entries(res.data.data2),
-//           datastats: Object.entries(res.data.datastats),
-//           url: res.data.url,
-//           loading: false
-//         });
-//       });
-//   };
+    //use Axios to post csv file with changed params, then receive the data return by server
+    axios
+      .post(
+        `http://ec2-52-193-188-87.ap-northeast-1.compute.amazonaws.com/uploadwithsetting/${values.poly}/${values.param1}`,
+        data
+      )
+      .then(res => {
+        // then update the state using returned data
+        this.setState({
+          data1: Object.entries(res.data.data1),
+          data2: Object.entries(res.data.data2),
+          datastats: Object.entries(res.data.datastats),
+          url: res.data.url,
+          loading: false
+        });
+      });
+  };
 
   render() {
     const { classes } = this.props;
@@ -163,7 +163,7 @@ class Upload extends React.Component {
                   >
                     UPLOAD CSV FILE
                   </Button>
-                  {/* <ChangeParam changeAndUpload={this.changeAndUpload} /> */}
+                  <ChangeParam changeAndUpload={this.changeAndUpload} />
                 </Typography>
               </CardContent>
             </Card>
