@@ -10,7 +10,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 //Login function, a dialog will pop out if click
-export default function Login({ handleLogin, loginStatus, user }) {
+export default function Login({ handleLogin,handleLogout, loginStatus, user }) {
   const [open, setOpen] = React.useState(false);
 
   //receive user Email and Password
@@ -42,6 +42,7 @@ export default function Login({ handleLogin, loginStatus, user }) {
     setUserPassword("");
   }
 
+
   return (
     <div>
       {/*check login status, if not render "Login" button
@@ -68,7 +69,7 @@ export default function Login({ handleLogin, loginStatus, user }) {
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </>
       ) : (

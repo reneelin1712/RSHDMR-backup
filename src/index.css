@@ -8,3 +8,54 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* * {
+	margin: 0;
+    padding: 0;
+} */
+
+section {
+    margin: 2em
+}
+
+#video {
+    display: block;
+    margin: auto;
+}
+
+#intro {
+    text-align: center;
+}
+
+#introduction div, #client div{
+    overflow: hidden;
+}
+
+#introduction div img, #client div img{
+    float: left;
+}
+
+#content {
+    display: flex;
+}
+
+.step p {
+    margin: 1em
+
+}
+.step img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#SA img, #GMDH img,#RSHDMR img,#sobol img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#SA p, #GMDH p,#RSHDMR p,#sobol p{
+    margin: 1em;
+}
+
+
+
+
