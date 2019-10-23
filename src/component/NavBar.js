@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -9,14 +9,17 @@ import Box from "@material-ui/core/Box";
 import Paper from "../component/Paper";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import Upload from "./Upload";
 import Login from "./Login";
 import Signup from "./SignUp";
+import Client from "../images/client.jpg";
 import CSV from "../images/csv.png";
 import Result from "../images/result.png";
 import Pdf from "../images/pdf.png";
 import Image1 from "../images/1.png";
+import Image2 from "../images/2.png";
+import Image3 from "../images/3.png";
+import Image4 from "../images/4.png";
 import Image5 from "../images/5.png";
 import Image6 from "../images/6.png";
 import Image7 from "../images/7.png";
@@ -76,15 +79,17 @@ function LinkTab(props) {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
+    // backgroundColor: theme.palette.primary.dark
   },
   navButton: {
     marginTop: theme.spacing(0.6)
   }
 }));
 
+
+
 //the navigation bar component
-export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }) {
+export default function NavTabs({ handleLogin, handleLogout, loginStatus,ifSignup, user }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -93,23 +98,23 @@ export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }
   }
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div className={classes.root} >
+      <AppBar position="static" color="primary">
         <Grid container spacing={3}>
           {/*Left top icon, we will change it to the website symbol in the future */}
-          <Grid item xs={1}>
+          <Grid item xs={2}>
             <IconButton
               edge="start"
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
             >
-              <MenuIcon />
+              
             </IconButton>
           </Grid>
 
           {/*the navigation tabs */}
-          <Grid item xs={9}>
+          <Grid item xs={6}>
             <Tabs
               variant="fullWidth"
               value={value}
@@ -124,7 +129,7 @@ export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }
           </Grid>
 
           {/*login selection menu */}
-          <Grid item xs={1}>
+          <Grid item xs={1} style={{marginLeft:'10%'}}>
             <Login
               handleLogin={handleLogin}
               loginStatus={loginStatus}
@@ -132,41 +137,45 @@ export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }
               user={user}
             />
           </Grid>
-          {loginStatus ? null
+          {loginStatus? null
             :
             <Grid item xs={1}>
-              <Signup />
+              <Signup ifSignup={ifSignup}/>
             </Grid>}
         </Grid>
       </AppBar>
 
       {/*Corresponding tab panels below */}
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} >
         <Paper />
       </TabPanel>
+
       <TabPanel value={value} index={1}>
         <Upload />
       </TabPanel>
+
       <TabPanel value={value} index={2}>
         {
           <>
             <section class="step">
               <h1>User Guide</h1>
-              <p>When you first enter the home page, you can see there is an introduction about our website.
-                  Click at the button "Analysis", you can jump to the analysis page.
+              <p>Click the "Analysis" button at navigation bar to start.<br />
+              Below is the step by step guidence, <strong>if you have any other questions please 
+              leave message at the bottom of this page <a href="https://deco3801-awsninja.uqcloud.net/rshdmr/" target="_blank">Message Us</a></strong>
+                 
         </p>
-              <h2>Step 1 Upload CSV file</h2>
+              <h3>Step 1 Upload CSV file</h3>
               <p>In this page, you can upload your csv file. And ensure your csv file is under this format:</p>
               <img src={CSV} class="img-thumbnail" alt="Cinque Terre" />
               <p>The figure was our example CSV showed for you.
                   The columns named “usle”, “gully”, “bd”, “fp”, “remob”, “set”are independent
             variables. The last column named “Y” is dependent variable.</p>
               <p>Ensure you have "X" and one column "Y" in your csv file.</p>
-              <h2>Step 2 Analysis the CSV file</h2>
+              <h3>Step 2 Analysis the CSV file</h3>
               <p>When you see the webpage showing "Processing" whcih means our backend algorithm is analysis your csv file.
                   So you can waiting for your result.
         </p>
-              <h2>Step 3 Get your analysis result</h2>
+              <h3>Step 3 Get your analysis result</h3>
               <p>After procrssing is over, the analysis result will be shown on the right side of the website.
                   And you can clearly see your analysis result like the figure below showing.
         </p>
@@ -174,11 +183,11 @@ export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }
                 <img src={Result} class="img-thumbnail" alt="Cinque Terre" />
               </figure>
 
-              <h2>Step 4 Download your result report</h2>
+              <h3>Step 4 Download your result report</h3>
               <p>At the bottom of website, there is a button "Download". Click on the button, you can
             download your result report which is a pdf format in your local machine. </p>
               <img src={Pdf} class="img-thumbnail" alt="Cinque Terre" />
-              <h2>Another tips of our website</h2>
+              <h3>Another tips of our website</h3>
               <p>You can see more introduction about our project in the home page, and there is a vidoe telling our purpose
                   and background of our website. And about the details of the  machine learning model we used, you can turn to
                   the "About Page". That page is focus on the machine learning model and how the model works.
@@ -190,11 +199,35 @@ export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }
 
         }
       </TabPanel>
+
       <TabPanel value={value} index={3}>
         {
           <>
-            <section id="SA">
-            <h1>Background</h1>
+            <section id="SA" class="step">
+            {/* <h1>Background</h1> */}
+            <h1>
+                        About Author
+                    </h1>
+            <section id="client">
+            <div>
+                <img src={Client} alt="client" style={{height:160, marginRight:20}}/>
+
+                <article>
+                  
+                    <h3>Frederick Bennet </h3>
+                    <p>
+                        I have a research background in theoretical and experimental molecular physics. For
+                        the last 15 years I have been involved in activities aimed at reducing the impacts of
+                        poor water quality on the Great Barrier Reef. In my present role I work in a team
+                        concerned with modelling the changes in Great Barrier Reef water quality as a function
+                        of improved land management practices. Here is my paper on sensitivity analysis of optimizing 
+                        research models. <a href="https://www.researchgate.net/publication/321397981_Sensitivity_analysis_of_
+                        constituent_generation_parameters_of_an_integrated_hydrological_and_water_quality_model_using_a_GMDH_
+                        polynomial_neural_network" target="_blank">Paper Link</a>
+                    </p>
+                </article>
+            </div>
+        </section>
             <h2>Sensitivity Analysis Introduction</h2>
             <div>
                 <p>
@@ -213,12 +246,12 @@ export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }
             <h2>Group Method of Data Handling </h2>
             <div>
                 <p>Group Method of Data Handling (GMDH) is a kind of inductive algorithms which has great performance on selecting optimal model structure and increasing algorithms accuracy. Multiple inputs with one output GMDH model is a subset of components of the base function:</p>
-                <img src="images/2.png" alt="" />
+                <img src={Image2} alt="" />
                 <p>Where f would be function for the responding input x_i, a_i would be coefficients for the responding f. In order to find the best solution, GMDH will consider different subsets of base function which called partial model, it will gradually increase the number of partial model components and find a model structure with optimal complexity indicated by the minimum value of an external criterion, and the coefficients would be estimated by the least squares method.</p>
                 <p>This website is based on the client’s paper, the objective of the GMDH algorithms is the construction of a high-order Kolmogorov-Gabor polynomial of the form:</p>
-                <img src="images/3.png" alt="" />
+                <img src={Image3} alt="" />
                 <p>This model is also known as polynomial neural networks. The basic approach of GMDH is each neuron in the network receives input from exactly two other neurons with the exception of the neurons representing the input layer. The two inputs x_i and x_j are then combined to produce a partial descriptor based on the simple quadratic transfer function:</p>
-                <img src="images/4.png" alt="" />
+                <img src={Image4} alt="" />
             </div>
         </section>
 
@@ -265,6 +298,7 @@ export default function NavTabs({ handleLogin, handleLogout, loginStatus, user }
                 <p>This website is based on client’s paper, it will use GMDH constructing a random sampling high dimensional model representation (RS-HDMR) to calculate first and second order Sobol sensitivity indices.</p>
             </div>
         </section>
+
           </>
         }
       </TabPanel>

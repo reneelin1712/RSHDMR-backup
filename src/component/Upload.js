@@ -53,6 +53,10 @@ class Upload extends React.Component {
 
   //the file and file name will be updated to the state of this component
   onChangeHandler = e => {
+    //check if the file is in csv format
+    if(e.target.files[0].type !=="text/csv"){
+      alert("Please use CSV file, other format is not accepted, thanks. ")
+    }
     this.setState({
       selectedFile: e.target.files[0],
       fileName: e.target.files[0].name
@@ -62,6 +66,11 @@ class Upload extends React.Component {
 
   //send file to server
   uploadFile = () => {
+    //check if a file has been selected
+    if(this.state.selectedFile==null){
+      alert("Please choose a CSV file first, thanks");
+      return
+    }
     this.setState({ loading: true });
     const data = new FormData();
     data.append("file", this.state.selectedFile);
@@ -82,7 +91,6 @@ class Upload extends React.Component {
           url: res.data.url,
           loading: false
         });
-        // return "done"
       });
   };
 
@@ -129,8 +137,8 @@ class Upload extends React.Component {
                   color="default"
                   className={classes.appbar}
                 >
-                  <Toolbar>
-                    <Typography align="center" variant="h6" color="inherit">
+                  <Toolbar onClick={this.uploadFile}>
+                    <Typography align="center" variant="h6" color="inherit" >
                       UPLOAD
                     </Typography>
                   </Toolbar>
@@ -155,15 +163,18 @@ class Upload extends React.Component {
                   color="textSecondary"
                   gutterBottom
                 >
+                
+                  <ChangeParam changeAndUpload={this.changeAndUpload} />
+
                   <Button
                     size="medium"
+                    style={{marginTop:10}}
                     variant="contained"
                     color="primary"
                     onClick={this.uploadFile}
                   >
-                    UPLOAD CSV FILE
+                    Submit
                   </Button>
-                  <ChangeParam changeAndUpload={this.changeAndUpload} />
                 </Typography>
               </CardContent>
             </Card>

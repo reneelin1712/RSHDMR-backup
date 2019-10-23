@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -32,7 +32,7 @@ export default function ChangeParam(props) {
           id="panel1a-header"
         >
           <Typography className={classes.heading}>
-            Change Algorithm Parameters
+            Change Parameters (Not Recommended)
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>

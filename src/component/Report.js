@@ -1,19 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
@@ -70,17 +62,16 @@ export default function Report({ report }) {
           </IconButton>
         }
         title="Report"
-        subheader="Sep, 2019"
       />
 
       {/*the first chunk of the data */}
       <CardContent>
         <List className={classes.report}>
           <Grid container spacing={1} style={{ width: "55%" }}>
-            {data1.map(([item, value]) => {
+            {data1.map(([item, value],index) => {
               return (
-                <Grid item xs={6}>
-                  <ListItem key={item}>
+                <Grid item xs={6} key={item}>
+                  <ListItem >
                     <ListItemText>
                       {item} is {value}
                     </ListItemText>
@@ -94,8 +85,8 @@ export default function Report({ report }) {
           <Grid container spacing={1}>
             {data2.map(([item, value]) => {
               return (
-                <Grid item xs={6}>
-                  <ListItem key={item}>
+                <Grid item xs={6} key={item}>
+                  <ListItem >
                     <ListItemText>
                       {item} is {value}
                     </ListItemText>
@@ -107,11 +98,11 @@ export default function Report({ report }) {
 
           {/*the third chunk of the data and image from server */}
           <Grid container spacing={1}>
-            <img src={url} />
+            <img src={url} alt="" />
             {datastats.map(([item, value]) => {
               return (
-                <Grid item xs={6}>
-                  <ListItem key={item}>
+                <Grid item xs={6} key={item}>
+                  <ListItem >
                     <ListItemText>
                       {item} is {value}
                     </ListItemText>

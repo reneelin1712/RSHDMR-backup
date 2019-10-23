@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
+//Signup function, a dialog will pop out if click
 export default function SignUp({ ifSignup }) {
   const [open, setOpen] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState("");
@@ -21,6 +22,7 @@ export default function SignUp({ ifSignup }) {
     setOpen(false);
   }
 
+  //send sign up request to server
   const handleSignup = async () => {
     setOpen(false);
     let newUser = {
@@ -87,7 +89,7 @@ export default function SignUp({ ifSignup }) {
             margin="dense"
             id="password"
             label="Password"
-            type="text"
+            type="password"
             fullWidth
             value={userPassword}
             onChange={({ target }) => setUserPassword(target.value)}

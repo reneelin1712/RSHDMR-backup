@@ -5,26 +5,13 @@ import axios from "axios";
 //top level component of this web app
 class App extends React.Component {
   state = {
-    users: [
-      {
-        email: "renee@123.com",
-        name: "renee",
-        password: "aaa"
-      },
-      {
-        email: "tom@123.com",
-        name: "tom",
-        password: "zzz"
-      }
-    ], //randomly makeup user information
+    users: [], //fetched user data will be updated here
     loginStatus: false, //current user login status
     user: {} //current user information
   };
 
+  //send login request to server
   handleLogin = (email, password) => {
-    // const currentUser = this.state.users.find(
-    //   user => user.email === email && user.password === password
-    // );
     const data = {
       email: email,
       password: password
@@ -41,16 +28,16 @@ class App extends React.Component {
       })
       
     }
+
+    //log out
     handleLogout =()=>{
       this.setState({ loginStatus: false, user: {} });
     }
 
-  //   if (currentUser) {
-  //     this.setState({ loginStatus: true, user: currentUser });
-  //   } else {
-  //     alert("Check your email address or password");
-  //   }
-  // };
+  ifSignup=(username)=>{
+    this.setState({ loginStatus: true, user: {name:username} })
+    console.log(this.state.user.name)
+  }
 
   render() {
     return (
@@ -60,6 +47,7 @@ class App extends React.Component {
           handleLogin={this.handleLogin}
           loginStatus={this.state.loginStatus}
           handleLogout={this.handleLogout}
+          ifSignup={this.ifSignup}
           user={this.state.user}
         />
       </div>
